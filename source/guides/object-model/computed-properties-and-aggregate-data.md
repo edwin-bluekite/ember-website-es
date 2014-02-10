@@ -1,8 +1,6 @@
-Often, you may have a computed property that relies on all of the items in an
-array to determine its value. For example, you may want to count all of the
-todo items in a controller to determine how many of them are completed.
+A menudo, se tiene una propiedad calculada que está basada en todos los elementos de un arreglo para determinar su valor. Por ejemplo, se puede necesitar contar todos los elementos TODO de un controllador para determinar cuantos de estos han sido completados.
 
-Here's what that computed property might look like:
+Así es como se observaría una propiedad calculada:
 
 ```javascript
 App.TodosController = Ember.Controller.extend({
@@ -17,16 +15,15 @@ App.TodosController = Ember.Controller.extend({
 });
 ```
 
-Note here that the dependent key (`todos.@each.isDone`) contains the special
-key `@each`. This instructs Ember.js to update bindings and fire observers for
-this computed property when one of the following four events occurs:
+Hay que notar aca que la llave dependiente (`todos.@each.isDone`) contiene la llave especial `@each`.
+Esto le indica e Ember.js que actualize los enlaces y ejecute los observers para esta propiedad calculada cuando alguno de estos cuatro eventos ocurre:
 
-1. The `isDone` property of any of the objects in the `todos` array changes.
-2. An item is added to the `todos` array.
-3. An item is removed from the `todos` array.
-4. The `todos` property of the controller is changed to a different array.
+1. La alguna propiedad `isDone` del arreglo de objetos `todos` cambia.
+2. Un elemento es agregado al arreglo de `todos`.
+3. Un elemento es eliminado del arreglo de `todos`.
+4. La propiedad `todos` del controllador es cambiada a un arreglo distinto.
 
-In the example above, the `remaining` count is `1`:
+En el ejemplo anterior, el contador `remaining` es `1`:
 
 ```javascript
 App.todosController = App.TodosController.create();
@@ -34,8 +31,7 @@ App.todosController.get('remaining');
 // 1
 ```
 
-If we change the todo's `isDone` property, the `remaining` property is updated
-automatically:
+Si se cambia la pripieadad `isDone`, la propiedad `remaining` es actualizada automáticamente:
 
 ```javascript
 var todos = App.todosController.get('todos');
@@ -52,5 +48,5 @@ App.todosController.get('remaining');
 // 1
 ```
 
-Note that `@each` only works one level deep. You cannot use nested forms like
+Hay que notar que `@each` solo trabaja a primer nivel. No es posible utilizarlo de maneras anidadas como:
 `todos.@each.owner.name` or `todos.@each.owner.@each.name`.
