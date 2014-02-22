@@ -1,39 +1,25 @@
-## Routing
+## Rutas
 
-As users interact with your application, it moves through many
-different states. Ember.js gives you helpful tools for managing
-that state in a way that scales with your application.
+A medida que los usuarios interactuan con la aplicación, esta pasará por diferentes estados. Ember.js proporciona herramientas que ayudarán a gestionar los distintos estados para que escalen junto a la aplicación.
 
-To understand why this is important, imagine we are writing a web app
-for managing a blog. At any given time, we should be able to answer
-questions like: _Is the user currently logged in? Are they an admin
-user? What post are they looking at? Is the settings screen open?  Are
-they editing the current post?_
+Para entender porqué esto es importante, supondremos que estamos escribiendo una aplicación para gestionar un blog. En cualquier momento deberá de poderse responder preguntas como: _¿Está el usuario actual logeado? ¿Es un usuario con rol administrativo? ¿Qué es lo que está viendo? ¿Está abierta la ventana de configuraciones? ¿Está editando el artículo actual?_
 
-In Ember.js, each of the possible states in your application is
-represented by a URL. Because all of the questions we asked above—
-_Are we logged in?  What post are we looking at?_ —are encapsulated by
-route handlers for the URLs, answering them is both simple and accurate.
+En Ember.js, cada uno de los posibles estados de una aplicación son representados por una URL. Porque todas las preguntas que se realizaron anteriormente-_¿Está el usuario actual logeado? ¿Es un usuario con rol administrativo?_ —están encapsuladas en los manejadores de ruta (route handlers) de las URL's, reponderlas es simple y preciso.
 
-At any given time, your application has one or more _active route
-handlers_. The active handlers can change for one of two reasons:
+En un momento dado, la aplicación tendrá uno o más _manejadores de ruta activos (active route handlers)_. Los manejadores de ruta pueden cambiar por una de dos razones:
 
-1. The user interacted with a view, which generated an event that caused
-   the URL to change.
-2. The user changed the URL manually (e.g., via the back button), or the
-   page was loaded for the first time.
+1. El usuario interactuó con una vista, que generó un evento que causo que la URL cambiara.
+2. El usuario modificó la ruta manualmente (Ej. con el botón atrás), o la página fue cargada por primera vez.
 
-When the current URL changes, the newly active route handlers may do one
-or more of the following:
+Cuando la URL cambia, los manejadores de la nueva ruta activa pueden realizar una o más de las acciones siguientes:
 
-1. Conditionally redirect to a new URL.
-2. Update a controller so that it represents a particular model.
-3. Change the template on screen, or place a new template into an
-   existing outlet.
+1. Redirigir a una nueva URL condicionalmente.
+2. Actualizar un controlador para que represente un modelo particular.
+3. Cambiar la plantilla en la pantalla, o colocar una nueva plantilla en un "outlet".
 
-###Logging Route Changes
+###Logear cambios de ruta
 
-As your application increases in complexity, it can be helpful to see exactly what is going on with the router. To have Ember write out transition events to the log, simply modify your `Ember.Application`:
+A medida que una aplicación se incremente en complejidad, puede ser útil saber que es lo que esta sucediendo en la ruta. Para que Ember muestre el log de eventos de transición, simplemente hay que modificar la variable `Ember.Application`:
 
 ```javascript
 App = Ember.Application.create({
@@ -41,12 +27,12 @@ App = Ember.Application.create({
 });
 ```
 
-###Specifying a Root URL
-If your Ember application is one of multiple web applications served from the same domain, it may be necessary to indicate to the router what the root URL for your Ember application is. By default, Ember will assume it is served from the root of your domain.
+###Especificar la URL de ruta
+Si la aplicación de Ember es una de varias aplicaciones web, servidas desde el mismo dominio, puede ser necesario indicar al enrutador cual es la URL raíz de la aplicación. De manera predeterminada, Ember asumirá que esta siendo servido desde la URL raíz de la aplicación.
 
-If for example, you wanted to serve your blogging application from www.emberjs.com/blog/, it would be necessary to specify a root URL of `/blog/`.
+Si por ejemplo, es necesaro servir la aplicación de blog desde www.emberjs.com/blog/, sera necesario especificar la ruta `/blog/`.
 
-This can be achieved by setting the rootURL on the router:
+Esto puede ser alcanzado especificando la variable rootURL en el enrutador.
 
 ```js
 App.Router.reopen({
