@@ -48,5 +48,5 @@ App.todosController.get('remaining');
 // 1
 ```
 
-Hay que notar que `@each` solo trabaja a primer nivel. No es posible utilizarlo de maneras anidadas como:
+Hay que notar que `@each` solo trabaja a primer nivel de profundidad. No es posible utilizarlo de maneras anidadas como:
 `todos.@each.owner.name` or `todos.@each.owner.@each.name`.

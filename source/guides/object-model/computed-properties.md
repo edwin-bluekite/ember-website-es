@@ -103,4 +103,4 @@ captainAmerica.get('firstName'); // William
 captainAmerica.get('lastName'); // Burnside
 ```
 
-Ember ejecutará un la llamada a la propiedad calculada para los setters y  getters, de manera que si deseas utilizar una propiedad calculada como un setter, será necesario verificar la cantidad de argumentos para determinar si está siendo llamada como un getter o un setter.
+Ember ejecutará un la llamada a la propiedad calculada para los setters y  getters, de manera que si deseas utilizar una propiedad calculada como un setter, será necesario verificar la cantidad de argumentos para determinar si está siendo llamada como un getter o un setter. Hay que notar que si un valor es retornado de un setter, este se almacena en caché como el valor de la propiedad.
