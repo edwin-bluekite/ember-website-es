@@ -1,7 +1,4 @@
-When your application starts, the router is responsible for displaying
-templates, loading data, and otherwise setting up application state.
-It does so by matching the current URL to the _routes_ that you've
-defined.
+Cuando una aplicación inicia, el enrutador es responsable de desplegar las plantillas, cargar los datos, y el establecimiento del estado de la aplicación. Lo realiza relacionando la URL actual a las rutas que se han definido.
 
 ```js
 App.Router.map(function() {
@@ -10,17 +7,13 @@ App.Router.map(function() {
 });
 ```
 
-Now, when the user visits `/about`, Ember.js will render the `about`
-template. Visiting `/favs` will render the `favorites` template.
+Ahora, cuando un usuario visita `/about`, Ember.js renderizara la plantilla `about`. Al visitar `/favs` renderizara la plantilla `favorites`.
 
 <aside>
-**Heads up!** You get a few routes for free: the `ApplicationRoute` and
-the `IndexRoute` (corresponding to the `/` path).
-[See below](#toc_initial-routes) for more details.
+**Atención** Algunas rutas se obtienen gratuitamente `ApplicationRoute` y el `IndexRoute` (que corresponden al path `/`). [Ver la sección](#toc_initial-routes) para mas detalles.
 </aside>
 
-Note that you can leave off the path if it is the same as the route
-name. In this case, the following is equivalent to the above example:
+Es necesario notar que no es necesario especificar la propiedad `path` si es la misma que el nombre de la ruta. En este caso, lo siguiente es equivalente al ejemplo anterior:
 
 ```js
 App.Router.map(function() {
@@ -29,9 +22,7 @@ App.Router.map(function() {
 });
 ```
 
-Inside your templates, you can use `{{link-to}}` to navigate between
-routes, using the name that you provided to the `route` method (or, in
-the case of `/`, the name `index`).
+En las plantillas, se utiliza `{{link-to}}` para navegar a través de las rutas, utilizando el nombre que se específico en el metodo de ruteo `route` (o en el caso de la ruta `/`, el nombre `index`).
 
 ```handlebars
 {{#link-to 'index'}}<img class="logo">{{/link-to}}
@@ -41,13 +32,9 @@ the case of `/`, the name `index`).
   {{#link-to 'favorites'}}Favorites{{/link-to}}
 </nav>
 ```
+El helper `{{link-to}}` tambien agregará la clase `active` a los links que correspondan a la ruta activa actual.
 
-The `{{link-to}}` helper will also add an `active` class to the link that
-points to the currently active route.
-
-You can customize the behavior of a route by creating an `Ember.Route`
-subclass. For example, to customize what happens when your user visits
-`/`, create an `App.IndexRoute`:
+Se puede personalizar el comportamiento de la ruta heredando de la clase `Ember.Route`. Por ejemplo para personalizar que se ejecuta cuando el usuario se dirije a `/`, hay que crear la ruta `App.IndexRoute`:
 
 ```javascript
 App.IndexRoute = Ember.Route.extend({
@@ -58,28 +45,25 @@ App.IndexRoute = Ember.Route.extend({
 });
 ```
 
-The `IndexController` is the starting context for the `index` template.
-Now that you've set `title`, you can use it in the template:
+El controlador `IndexController` es el contexto inicial para la plantilla `index`. Ahora que se a establecido el `title`, es posible utilizarlo en la plantilla:
 
 ```handlebars
 <!-- get the title from the IndexController -->
 <h1>{{title}}</h1>
 ```
 
-(If you don't explicitly define an `App.IndexController`, Ember.js will
-automatically generate one for you.)
+(Si no se define explicitamente `App.IndexController`, Ember.js generará uno automáticamente)
 
-Ember.js automatically figures out the names of the routes and controllers based on
-the name you pass to `this.route`.
+Ember.js encontrará automáticamente los nombres de las rutas y los controladores basado en el nombre que se le pasa a `this.route`.
 
 <table>
   <thead>
   <tr>
     <th>URL</th>
-    <th>Route Name</th>
-    <th>Controller</th>
-    <th>Route</th>
-    <th>Template</th>
+    <th>Nombre de la ruta</th>
+    <th>Controlador</th>
+    <th>Ruta</th>
+    <th>Plantilla</th>
   </tr>
   </thead>
   <tr>
@@ -105,9 +89,9 @@ the name you pass to `this.route`.
   </tr>
 </table>
 
-### Resources
+### Recursos
 
-You can define groups of routes that work with a resource:
+Se pueden definir grupos de rutas que trabajan con un recurso:
 
 ```javascript
 App.Router.map(function() {
@@ -117,8 +101,7 @@ App.Router.map(function() {
 });
 ```
 
-As with `this.route`, you can leave off the path if it's the same as the
-name of the route, so the following router is equivalent:
+Al igual que `this.route`, es posible quitar la propiedad `path` si es el mismo que el nombre de la ruta, de mode que la siguiente ruta es equivalente a la anterior.
 
 ```javascript
 App.Router.map(function() {
@@ -134,10 +117,10 @@ This router creates three routes:
   <thead>
   <tr>
     <th>URL</th>
-    <th>Route Name</th>
-    <th>Controller</th>
-    <th>Route</th>
-    <th>Template</th>
+    <th>Nombre de la Ruta</th>
+    <th>Controlador</th>
+    <th>Ruta</th>
+    <th>Plantilla</th>
   </tr>
   </thead>
   <tr>
